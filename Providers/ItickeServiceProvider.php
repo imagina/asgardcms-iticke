@@ -30,7 +30,9 @@ class ItickeServiceProvider extends ServiceProvider
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('tickets', array_dot(trans('iticke::tickets')));
+            $event->load('ticketcomments', array_dot(trans('iticke::ticketcomments')));
             // append translations
+
 
         });
     }
@@ -66,7 +68,20 @@ class ItickeServiceProvider extends ServiceProvider
                 return new \Modules\Iticke\Repositories\Cache\CacheTicketDecorator($repository);
             }
         );
+        $this->app->bind(
+            'Modules\Iticke\Repositories\TicketCommentRepository',
+            function () {
+                $repository = new \Modules\Iticke\Repositories\Eloquent\EloquentTicketCommentRepository(new \Modules\Iticke\Entities\TicketComment());
+
+                if (! config('app.cache')) {
+                    return $repository;
+                }
+
+                return new \Modules\Iticke\Repositories\Cache\CacheTicketCommentDecorator($repository);
+            }
+        );
 // add bindings
+
 
     }
 }

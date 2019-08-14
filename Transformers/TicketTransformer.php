@@ -13,6 +13,9 @@ class TicketTransformer extends Resource
         $data = [
           'id' => $this->id,
           'subject' => $this->subject ?? '',
+          'status'=>iticke__getStatus()->get($this->status),
+          'priority'=>iticke__getPriority()->get($this->priority),
+          'type'=>iticke__getType()->get($this->type),
           'message' => $this->message ?? '',
           'full_name' => $this->full_name ?? '',
           'email' => $this->email ?? '',

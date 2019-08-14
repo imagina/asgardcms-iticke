@@ -52,7 +52,17 @@ class RegisterItickeSidebar implements \Maatwebsite\Sidebar\SidebarExtender
                         $this->auth->hasAccess('iticke.tickets.index')
                     );
                 });
+                $item->item(trans('iticke::ticketcomments.title.ticketcomments'), function (Item $item) {
+                    $item->icon('fa fa-copy');
+                    $item->weight(0);
+                    $item->append('admin.iticke.ticketcomment.create');
+                    $item->route('admin.iticke.ticketcomment.index');
+                    $item->authorize(
+                        $this->auth->hasAccess('iticke.ticketcomments.index')
+                    );
+                });
 // append
+
 
             });
         });
