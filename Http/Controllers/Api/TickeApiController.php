@@ -129,8 +129,13 @@ class TickeApiController extends BaseApiController
       //Get Parameters from URL.
       $params = $this->getParamsRequest($request);
 
+      //Get ticket
+      $ticket = $this->ticket->getItem($criteria, $params);
+      if(!$ticket)
+      throw new \Exception("Item not found", 404);
+
       //Request to Repository
-      $this->ticket->updateBy($criteria, $data, $params);
+      $this->ticket->update($ticket, $data);
 
       //Response
       $response = ["data" => 'Item Updated'];
@@ -158,8 +163,13 @@ class TickeApiController extends BaseApiController
       //Get params
       $params = $this->getParamsRequest($request);
 
+      //Get ticket
+      $ticket = $this->ticket->getItem($criteria, $params);
+      if(!$ticket)
+      throw new \Exception("Item not found", 404);
+
       //call Method delete
-      $this->ticket->deleteBy($criteria, $params);
+      $this->ticket->destroy($ticket);
 
       //Response
       $response = ["data" => "Item deleted"];
