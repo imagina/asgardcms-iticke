@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'manage resource' => 'Manage tickets',
     'list resource' => 'List tickets',
     'create resource' => 'Create tickets',
     'edit resource' => 'Edit tickets',

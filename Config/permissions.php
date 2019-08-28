@@ -2,6 +2,7 @@
 
 return [
     'iticke.tickets' => [
+      'manage' => 'iticke::tickets.manage resource',
         'index' => 'iticke::tickets.list resource',
         'create' => 'iticke::tickets.create resource',
         'edit' => 'iticke::tickets.edit resource',
