@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\ITicke\Http\Controllers\Api;
+namespace Modules\Iticke\Http\Controllers\Api;
 
 // Requests & Response
-use Modules\ITicke\Http\Requests\CreateTicketRequest;
+use Modules\Iticke\Http\Requests\CreateTicketRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -11,10 +11,10 @@ use Illuminate\Http\Response;
 use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
 
 // Transformers
-use Modules\ITicke\Transformers\TicketTransformer;
+use Modules\Iticke\Transformers\TicketTransformer;
 
 // Repositories
-use Modules\ITicke\Repositories\TicketRepository;
+use Modules\Iticke\Repositories\TicketRepository;
 
 class TickeApiController extends BaseApiController
 {
@@ -106,7 +106,7 @@ class TickeApiController extends BaseApiController
     } catch (\Exception $e) {
       \DB::rollback();//Rollback to Data Base
       $status = $this->getStatusError($e->getCode());
-      $response = ["errors" => $e->getMessage()];
+      $response = ["errors" => $e->getMessage(),"line"=>$e->getLine(),"trace"=>$e->getTrace()];
     }
     //Return response
     return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);

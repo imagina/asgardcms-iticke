@@ -17,7 +17,7 @@ class TicketTransformer extends Resource
           'priority'=>iticke__getPriority()->get($this->priority),
           'type'=>iticke__getType()->get($this->type),
           'message' => $this->message ?? '',
-          'full_name' => $this->full_name ?? '',
+          'fullName' => $this->full_name ?? '',
           'email' => $this->email ?? '',
           'phone' => $this->phone ?? '',
           'createdAt' => $this->when($this->created_at, $this->created_at),

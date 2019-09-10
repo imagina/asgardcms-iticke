@@ -11,8 +11,8 @@ class Type
 
     const QUESTION = 0;//PREGUNTA
     const COMPLAIN = 1;//QUEJA
-    const CLAIM = 1;//RECLAMO
-    const REQUEST = 1;//SOLICITUD
+    const CLAIM = 2;//RECLAMO
+    const REQUEST = 3;//SOLICITUD
 
     /**
      * @var array

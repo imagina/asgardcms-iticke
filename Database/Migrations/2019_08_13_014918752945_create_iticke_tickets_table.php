@@ -24,7 +24,7 @@ class CreateItickeTicketsTable extends Migration
             $table->string('full_name');
             $table->string('phone')->nullable();
             $table->string('email');
-            $table->string('options');
+            $table->string('options')->nullable();
             $table->timestamps();
         });
     }
